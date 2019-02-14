@@ -24,6 +24,38 @@ namespace NET_Gram.Data
                    Caption = "In a field of dreams",
                    Rating = 4,
                    URL = "flowers.jpg"
+               },
+               new Post
+               {
+                   ID = 2,
+                   Title = "bubbles",
+                   Caption = "In a bathtub",
+                   Rating = 3,
+                   URL = "bubbles.jpg"
+               },
+               new Post
+               {
+                   ID = 3,
+                   Title = "clouds",
+                   Caption = "On cloud nine",
+                   Rating = 4,
+                   URL = "cloud.jpg"
+               },
+               new Post
+               {
+                   ID = 4,
+                   Title = "food",
+                   Caption = "I love food",
+                   Rating = 5,
+                   URL = "food.jpg"
+               },
+               new Post
+               {
+                   ID = 5,
+                   Title = "makeup",
+                   Caption = "I like it",
+                   Rating = 4,
+                   URL = "makeup.jpg"
                }
                 );
         }
