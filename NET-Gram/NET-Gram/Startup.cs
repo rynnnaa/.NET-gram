@@ -20,7 +20,7 @@ namespace NET_Gram
 
         public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+             var builder = new ConfigurationBuilder().AddEnvironmentVariables();
             builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
             Configuration = configuration;
@@ -30,7 +30,7 @@ namespace NET_Gram
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<PostDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<PostDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CoonectionStrings:DefaultConnection")));
             services.AddScoped<IPost, PostManager>();
         }
 
