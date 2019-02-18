@@ -31,9 +31,12 @@ namespace NET_Gram.Pages.Posts
             Post = await _post.FindPost(ID);
         }
         //posts back to the server
-        public async Task OnPost()
+        public async Task<IActionResult> OnPost()
         {
-           await _post.SaveAsync(Post);
+            await _post.SaveAsync(Post);
+            return RedirectToPage("/Posts/Index", ID);
+
+                        
         }
             
         

@@ -7,7 +7,7 @@
 <h1>
     ManagePosts
 </h1>
-<form method=" ="post"></form>
+<form method="post">
 <label asp-for="Post.Title"></label>
 <input asp-for="Post.Title" />
 
@@ -18,5 +18,7 @@
 <input asp-for="Post.Caption" />
 <textarea rows="5" asp-for="Post.Caption"></textarea>
 
-
+<button type="submit">SAVE</button>
+<button type="submit" asp-page-handler="Delete">DELETE</button>
+</form>
 
