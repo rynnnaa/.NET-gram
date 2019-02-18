@@ -1,0 +1,22 @@
+﻿@page "{id}"
+@model NET_Gram.Pages.Posts.ManagePostsModel
+@{
+    ViewData["Title"] = "ManagePosts";
+}
+
+<h1>
+    ManagePosts
+</h1>
+<form method=" ="post"></form>
+<label asp-for="Post.Title"></label>
+<input asp-for="Post.Title" />
+
+<label asp-for="Post.Rating"></label>
+<input asp-for="Post.Rating" />
+
+<label asp-for="Post.Caption"></label>
+<input asp-for="Post.Caption" />
+<textarea rows="5" asp-for="Post.Caption"></textarea>
+
+
+
