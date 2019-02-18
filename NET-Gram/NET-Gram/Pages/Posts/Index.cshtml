@@ -1,4 +1,17 @@
-﻿@page
+﻿@page "{id}"
 @model NET_Gram.Pages.Posts.IndexModel
 @{
 }
+
+<div>
+    <label asp-for="Post.Title"></label>"
+    <label asp-for="Post.Title">@Model.Post.</label>
+</div>
+<div>
+    <label asp-for="Post.Caption"></label>"
+    <label asp-for="Post.Caption">@Model.Post.</label>
+</div>
+<div>
+    <label asp-for="Post.Rating"></label>"
+    <label asp-for="Post.Rating">@Model.Post.</label>
+</div>
