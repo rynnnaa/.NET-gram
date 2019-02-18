@@ -30,7 +30,7 @@ namespace NET_Gram
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<PostDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CoonectionStrings:DefaultConnection")));
+            services.AddDbContext<PostDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IPost, PostManager>();
         }
 

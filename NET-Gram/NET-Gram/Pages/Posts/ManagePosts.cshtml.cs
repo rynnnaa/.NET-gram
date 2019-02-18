@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NET_Gram.Models;
@@ -23,7 +24,6 @@ namespace NET_Gram.Pages.Posts
         [BindProperty]
         public IFormFile Image { get; set; }
 
-        public Blob BlobImage { get; set; }
 
         public ManagePostsModel(IPost post)
         {
