@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.WindowsAzure.Storage.Blob;
 using NET_Gram.Models;
 using NET_Gram.Models.Interfaces;
 
@@ -23,7 +25,7 @@ namespace NET_Gram.Pages.Posts
 
         [BindProperty]
         public IFormFile Image { get; set; }
-
+        public object BlobImage { get; private set; }
 
         public ManagePostsModel(IPost post)
         {
@@ -48,8 +50,43 @@ namespace NET_Gram.Pages.Posts
             pst.Title = Post.Title;
             pst.Caption = Post.Caption;
 
-            await _post.SaveAsync(Post);
-            return RedirectToPage("Index");
+            if (Image != null)
+            {
+                //Azure blob
+                var filePath = Path.GetTempFileName();
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Image.CopyToAsync(stream);
+                }
+
+                //get container
+                var container = await BlobImage.GetContainer("postimages");
+
+                //upload image
+                BlobImage.UploadFile(container, Image.FileName, filePath);
+
+                //get uploaded image
+                CloudBlob blob = await BlobImage.GetBlob(Image.FileName, container.Name);
+
+                //update the db image for the post
+                pst.URL = blob.Uri.ToString();
+            }
+
+            //save the post to the db
+            await _post.SaveAsync(pst);
+
+            return RedirectToPage("/Index");
+        }
+
+        /// <summary>
+        /// Delete a post
+        /// </summary>
+        /// <returns>home page</returns>
+        public async Task<IActionResult> OnPostDelete()
+        {
+            await _post.DeleteAsync(ID.Value);
+            return RedirectToPage("/Index");
         }
     }
 }
