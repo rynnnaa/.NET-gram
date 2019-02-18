@@ -25,7 +25,7 @@ namespace NET_Gram.Pages.Posts
 
         [BindProperty]
         public IFormFile Image { get; set; }
-        public object BlobImage { get; private set; }
+        public Models.Util.Blob BlobImage { get; private set; }
 
         public ManagePostsModel(IPost post)
         {
@@ -76,7 +76,7 @@ namespace NET_Gram.Pages.Posts
             //save the post to the db
             await _post.SaveAsync(pst);
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Posts/Index");
         }
 
         /// <summary>
