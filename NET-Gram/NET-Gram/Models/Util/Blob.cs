@@ -18,5 +18,32 @@ namespace NET_Gram.Models.Util
             CloudStorageAccount = CloudStorageAccount.Parse(configuration["BlobConnectionString"]);
             CloudBlobClient = CloudStorageAccount.CreateCloudBlobClient();
         }
+        //Get Container
+        public async Task<CloudBlobContainer> GetContainer(string containerName)
+        {
+            CloudBlobContainer cbc = CloudBlobClient.GetContainerReference(containerName);
+            await cbc.CreateIfNotExistsAsync();
+            await cbc.SetPermissionsAsync(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+
+            return cbc;
+        }
+
+        //Get blob
+
+        public async Task<CloudBlob> GetBlob(string imageName, string containerName)
+        {
+            //var container = CloudBlobClient.GetContainerReference(containerName);
+            CloudBlobContainer container = await GetContainer(containerName);
+
+            CloudBlob blob = container.GetBlockBlobReference(imageName);
+
+            return blob;
+        }
+
+        public void UploadFile(CloudBlobContainer cloudBlobContainer, string fileName, string filePath)
+        {
+            var blobFile = cloudBlobContainer.GetBlockBlobReference(fileName);
+            blobFile.UploadFromFileAsync(filePath);
+        }
     }
 }

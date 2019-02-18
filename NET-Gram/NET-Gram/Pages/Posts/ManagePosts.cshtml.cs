@@ -20,6 +20,11 @@ namespace NET_Gram.Pages.Posts
         [BindProperty]
         public Post Post { get; set; }
 
+        [BindProperty]
+        public IFormFile Image { get; set; }
+
+        public Blob BlobImage { get; set; }
+
         public ManagePostsModel(IPost post)
         {
             _post = post;
