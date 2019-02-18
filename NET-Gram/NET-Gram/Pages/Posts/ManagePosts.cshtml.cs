@@ -14,7 +14,7 @@ namespace NET_Gram.Pages.Posts
         private readonly IPost _post;
 
         [FromRoute]
-        public int ID { get; set; }
+        public int? ID { get; set; }
 
         //data thats saved inside user form is then bound to the post property
         [BindProperty]
@@ -25,20 +25,26 @@ namespace NET_Gram.Pages.Posts
             _post = post;
         }
 
-        //gets the data
+        /// <summary>
+        /// Gets a post
+        /// </summary>
+        /// <returns>post</returns>
         public async Task OnGet()
         {
-            Post = await _post.FindPost(ID);
+            //if there isn't a post, create a new one
+            Post = await _post.FindPost(ID.GetValueOrDefault()) ?? new Post();
         }
         //posts back to the server
         public async Task<IActionResult> OnPost()
         {
-            await _post.SaveAsync(Post);
-            return RedirectToPage("/Posts/Index", ID);
+            var pst = await _post.FindPost(ID.GetValueOrDefault()) ?? new Post();
 
-                        
+            //set data from the db to the new data from Post/user input
+            pst.Title = Post.Title;
+            pst.Caption = Post.Caption;
+
+            await _post.SaveAsync(Post);
+            return RedirectToPage("Index");
         }
-            
-        
     }
 }
