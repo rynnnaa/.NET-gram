@@ -1,0 +1,22 @@
+﻿@page
+@using NET_Gram.Models.Interfaces
+
+@inject IPost PostManager
+
+@{
+    var posts = await PostManager.GetPosts();
+
+}
+
+@foreach (var item in posts)
+{
+    <h3>@item.Title</h3>
+    <p>@item.Rating</p>
+
+    // post id
+
+    <a asp-page="/Posts/Index" asp-route-id="@item.ID">@item.Title</a>
+}
+
+<h3><a asp-page="/Posts/ManagePosts">Add New Post</a></h3>
+

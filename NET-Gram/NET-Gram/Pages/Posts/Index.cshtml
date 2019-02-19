@@ -1,0 +1,19 @@
+﻿@page "{id}"
+@model NET_Gram.Pages.Posts.IndexModel
+@{
+}
+
+<img src="@Model.Url" />
+
+<div>
+    <label asp-for="Post.Title"></label>
+    <input asp-for="Post.Title"/>
+</div>
+<div>
+    <label asp-for="Post.Caption"></label>
+    <input asp-for="Post.Caption" />
+</div>
+<div>
+    <label asp-for="Post.Rating"></label>
+    <input asp-for="Post.Rating" />
+</div>
