@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage.Blob;
 using NET_Gram.Models;
 using NET_Gram.Models.Interfaces;
@@ -27,9 +28,10 @@ namespace NET_Gram.Pages.Posts
         public IFormFile Image { get; set; }
         public Models.Util.Blob BlobImage { get; private set; }
 
-        public ManagePostsModel(IPost post)
+        public ManagePostsModel(IPost post, IConfiguration configuration)
         {
             _post = post;
+            BlobImage = new Models.Util.Blob(configuration);
         }
 
         /// <summary>
