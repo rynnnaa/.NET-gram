@@ -10,23 +10,11 @@ This is a web application that holds posts of images and details. It contains a 
 
 The user lands on the home page which displays all posts
 
-![all posts]()
+![Homepage](https://github.com/rynnnaa/.NET-gram/blob/master/NET-Gram/NET-Gram/assets/LinkPage.PNG)
 
-Users can contribute a new post by clicking the "add new post" link
+![IndivisualPost(https://github.com/rynnnaa/.NET-gram/blob/master/NET-Gram/NET-Gram/assets/indexPage.PNG)
 
-![add posts]()
 
-In order to make a new post, upload an image, write a title and caption, then click "save"
-
-![upload]()
-
-A user may select a specific post to edit
-
-![select for edit]()
-
-The edit page allows users to change the image, title, and caption of the post
-
-![edit post]()
 
 ## Technologies Used
 
