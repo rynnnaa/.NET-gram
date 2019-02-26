@@ -10,9 +10,13 @@ This is a web application that holds posts of images and details. It contains a 
 
 The user lands on the home page which displays all posts
 
-![Homepage](https://github.com/rynnnaa/.NET-gram/blob/master/NET-Gram/NET-Gram/assets/LinkPage.PNG)
 
-![IndivisualPost(https://github.com/rynnnaa/.NET-gram/blob/master/NET-Gram/NET-Gram/assets/indexPage.PNG)
+
+![HomePage](https://github.com/rynnnaa/.NET-gram/blob/master/NET-Gram/NET-Gram/assets/indexPage.PNG)
+
+![IndivisualPost](https://github.com/rynnnaa/.NET-gram/blob/master/NET-Gram/NET-Gram/assets/LinkPage.PNG)
+
+
 
 
 
