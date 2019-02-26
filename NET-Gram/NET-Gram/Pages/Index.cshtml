@@ -4,6 +4,12 @@
 @inject IPost PostManager
 
 @{
+    Layout = "_Layout";
+}
+
+
+
+@{
     var posts = await PostManager.GetPosts();
 
 }

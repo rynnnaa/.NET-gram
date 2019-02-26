@@ -1,13 +1,16 @@
 ﻿@page "{id}"
 @model NET_Gram.Pages.Posts.IndexModel
+
 @{
+    Layout = "_Layout";
 }
+
 
 <img src="@Model.Url" />
 
 <div>
     <label asp-for="Post.Title"></label>
-    <input asp-for="Post.Title"/>
+    <input asp-for="Post.Title" />
 </div>
 <div>
     <label asp-for="Post.Caption"></label>
